@@ -10,7 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Optional;
 import java.util.Set;
 
 @SpringBootApplication
@@ -33,6 +32,6 @@ public class PokerGameApplication implements CommandLineRunner {
         LOGGER.info("Paying poker game");
         Set<Card> cards = cardsReader.readCardSelection();
         System.out.println(bestPokerHandIdentifier.determineBestHand(cards).map(PokerHand::getName)
-        .orElse("No poker hand can be constructed."));
+                .orElse("No poker hand can be constructed."));
     }
 }

@@ -28,7 +28,7 @@ class CardsReaderImpl implements CardsReader {
     }
 
     private Card convertToCard(String stringCardDetails) {
-        stringCardDetails=stringCardDetails.trim();
+        stringCardDetails = stringCardDetails.trim();
         return Card.of(convertToCardRank(stringCardDetails), convertToCardSuit(stringCardDetails));
     }
 

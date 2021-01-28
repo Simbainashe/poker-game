@@ -12,25 +12,26 @@ import java.util.Objects;
  */
 class FiveOfAKindPokerHand extends PokerHand {
     static final FiveOfAKindPokerHand INSTANCE = new FiveOfAKindPokerHand();
+
     private FiveOfAKindPokerHand() {
         super("Five Of A Kind", 0);
     }
 
     @Override
     public boolean matches(Map<Card.Rank, List<Card.Suit>> rankSuitMap) {
-        Objects.requireNonNull(rankSuitMap,"rankSuitMap cannot be null");
-        boolean hasFourOfAKind=false, hasAJoker=false;
-        if (rankSuitMap.containsKey(Card.Rank.JOKER)){
+        Objects.requireNonNull(rankSuitMap, "rankSuitMap cannot be null");
+        boolean hasFourOfAKind = false, hasAJoker = false;
+        if (rankSuitMap.containsKey(Card.Rank.JOKER)) {
             hasAJoker = true;
         }
-        for (List<Card.Suit> suitCards: rankSuitMap.values()){
+        for (List<Card.Suit> suitCards : rankSuitMap.values()) {
             if (suitCards.size() == 4) {
                 hasFourOfAKind = true;
                 break;
             }
         }
 
-        if (hasFourOfAKind && hasAJoker){
+        if (hasFourOfAKind && hasAJoker) {
             return true;
         }
         return false;
