@@ -37,20 +37,29 @@ public class Card {
     }
 
     public enum Rank {
-        ACE,
-        KING,
-        QUEEN,
-        JACK,
-        TEN,
-        NINE,
-        EIGHT,
-        SEVEN,
-        SIX,
-        FIVE,
-        FOUR,
-        THREE,
-        TWO,
-        JOKER
+        ACE(0),
+        KING(1),
+        QUEEN(2),
+        JACK(3),
+        TEN(4),
+        NINE(5),
+        EIGHT(6),
+        SEVEN(7),
+        SIX(8),
+        FIVE(9),
+        FOUR(10),
+        THREE(11),
+        TWO(12),
+        JOKER(-78);
+        private final int orderOfRanking;
+
+        Rank(int orderOfRanking) {
+            this.orderOfRanking = orderOfRanking;
+        }
+
+        public int getOrderOfRanking() {
+            return orderOfRanking;
+        }
     }
 
     public enum Suit {
