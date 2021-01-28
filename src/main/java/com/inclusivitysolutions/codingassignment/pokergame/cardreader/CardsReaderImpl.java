@@ -22,6 +22,15 @@ class CardsReaderImpl implements CardsReader {
     @Override
     public Set<Card> readCardSelection() {
         LOGGER.info("Reading user's card selection <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+       try {
+           return readCardSelectionFromCommandLineInput();
+       }catch (IllegalArgumentException e){
+           return readCardSelectionFromCommandLineInput();
+       }
+    }
+
+    private Set<Card> readCardSelectionFromCommandLineInput(){
+       System.out.print("Enter card selection: ");
         String playerInput = SCANNER.nextLine();
         String[] cardDetails = playerInput.split(",");
         return Arrays.stream(cardDetails).map(this::convertToCard).collect(Collectors.toSet());
