@@ -28,9 +28,6 @@ class StraightFlushPokerHand extends PokerHand {
         for (int i = 0; i < sortedKeys.size() - 1; i++) {
             commonDifferenceSum += (sortedKeys.get(i + 1).getOrderOfRanking() - sortedKeys.get(i).getOrderOfRanking());
         }
-        if (commonDifferenceSum == 4) {
-            return true;
-        }
-        return false;
+        return commonDifferenceSum == 4;
     }
 }

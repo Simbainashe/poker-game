@@ -31,9 +31,6 @@ class FourOfAKindPokerHand extends PokerHand {
             }
         }
 
-        if (hasFourOfAKind && hasAKicker) {
-            return true;
-        }
-        return false;
+        return hasFourOfAKind && hasAKicker;
     }
 }
