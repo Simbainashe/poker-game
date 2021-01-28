@@ -12,6 +12,9 @@ public class Card {
 
     private Card(Rank rank, Suit suit) {
         Objects.requireNonNull(rank, "rank cannot be null");
+        if (Objects.isNull(suit) && !rank.equals(Rank.JOKER)) {
+            throw new IllegalStateException("Only joker can have null suit");
+        }
         this.rank = rank;
         this.suit = suit;
     }
