@@ -11,10 +11,12 @@ import java.util.Set;
 @SpringBootApplication
 public class PokerGameApplication implements CommandLineRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(PokerGameApplication.class);
-    public final CardsReader cardsReader;
+    private final CardsReader cardsReader;
+    private final BestPokerHandIdentifier bestPokerHandIdentifier;
 
-    public PokerGameApplication(CardsReader cardsReader) {
+    PokerGameApplication(CardsReader cardsReader, BestPokerHandIdentifier bestPokerHandIdentifier) {
         this.cardsReader = cardsReader;
+        this.bestPokerHandIdentifier = bestPokerHandIdentifier;
     }
 
     public static void main(String[] args) {
@@ -25,5 +27,6 @@ public class PokerGameApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         LOGGER.info("Paying poker game");
         Set<Card> cards = cardsReader.readCardSelection();
+        System.out.println(bestPokerHandIdentifier.determineBestHand(cards));
     }
 }
