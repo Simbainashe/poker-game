@@ -26,7 +26,7 @@ public abstract class PokerHand {
         return rank;
     }
 
-    public abstract boolean matches(Map<Card.Rank, List<Card.Suit>> valueSuitMap);
+    public abstract boolean matches(Map<Card.Rank, List<Card.Suit>> rankSuitMap);
 
     @Override
     public String toString() {
