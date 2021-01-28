@@ -21,13 +21,14 @@ class CardsReaderImpl implements CardsReader {
 
     @Override
     public Set<Card> readCardSelection() {
-        LOGGER.info("Reading user's card selection <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        LOGGER.info("Reading user's card selection <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
         String playerInput = SCANNER.nextLine();
         String[] cardDetails = playerInput.split(",");
         return Arrays.stream(cardDetails).map(this::convertToCard).collect(Collectors.toSet());
     }
 
     private Card convertToCard(String stringCardDetails) {
+        stringCardDetails=stringCardDetails.trim();
         return Card.of(convertToCardRank(stringCardDetails), convertToCardSuit(stringCardDetails));
     }
 
