@@ -1,7 +1,7 @@
 ### How to run this program
 
 The program accepts user input from the console.
-<br/>The application ris a spring boot application and it runs on port 8080 by default.
+<br/>The application is a spring boot application and it runs on port 8080 by default.
 <br/>
 The following are valid input for each rank:<br/>
 *  Ace -> A
