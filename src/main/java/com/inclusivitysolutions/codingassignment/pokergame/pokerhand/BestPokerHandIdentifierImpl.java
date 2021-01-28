@@ -19,12 +19,15 @@ class BestPokerHandIdentifierImpl implements BestPokerHandIdentifier {
             FourOfAKindPokerHand.INSTANCE, StraightFlushPokerHand.INSTANCE);
 
     @Override
-    public PokerHand determineBestHand(Set<Card> cards) {
+    public Optional<PokerHand> determineBestHand(Set<Card> cards) {
         LOGGER.info("Determining best poker from card collection: {}",cards);
         Map<Card.Rank, List<Card.Suit>> rankSuitMap = cards.stream()
                 .collect(Collectors.groupingBy(Card::getRank, Collectors.mapping(Card::getSuit, Collectors.toList())));
         List<PokerHand> sortedPossiblePokerHands = POKER_HANDS.stream().filter(pokerHand -> pokerHand.matches(rankSuitMap))
                 .sorted(Comparator.comparingInt(PokerHand::getRank)).collect(Collectors.toList());
-        return sortedPossiblePokerHands.get(0);
+        if (sortedPossiblePokerHands.size()==0){
+            return Optional.empty();
+        }
+        return Optional.of(sortedPossiblePokerHands.get(0));
     }
 }

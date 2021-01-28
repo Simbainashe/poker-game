@@ -3,12 +3,14 @@ package com.inclusivitysolutions.codingassignment.pokergame;
 import com.inclusivitysolutions.codingassignment.pokergame.card.Card;
 import com.inclusivitysolutions.codingassignment.pokergame.cardreader.CardsReader;
 import com.inclusivitysolutions.codingassignment.pokergame.pokerhand.BestPokerHandIdentifier;
+import com.inclusivitysolutions.codingassignment.pokergame.pokerhand.PokerHand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Optional;
 import java.util.Set;
 
 @SpringBootApplication
@@ -30,6 +32,7 @@ public class PokerGameApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         LOGGER.info("Paying poker game");
         Set<Card> cards = cardsReader.readCardSelection();
-        System.out.println(bestPokerHandIdentifier.determineBestHand(cards).getName());
+        System.out.println(bestPokerHandIdentifier.determineBestHand(cards).map(PokerHand::getName)
+        .orElse("No poker hand can be constructed."));
     }
 }
