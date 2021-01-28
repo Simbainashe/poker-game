@@ -30,6 +30,6 @@ public class PokerGameApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         LOGGER.info("Paying poker game");
         Set<Card> cards = cardsReader.readCardSelection();
-        System.out.println(bestPokerHandIdentifier.determineBestHand(cards));
+        System.out.println(bestPokerHandIdentifier.determineBestHand(cards).getName());
     }
 }
