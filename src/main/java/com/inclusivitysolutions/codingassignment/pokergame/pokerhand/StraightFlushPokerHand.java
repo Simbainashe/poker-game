@@ -25,8 +25,8 @@ class StraightFlushPokerHand extends PokerHand {
         List<Card.Rank> sortedKeys = rankSuitMap.keySet().stream()
                 .sorted(Comparator.comparingInt(Card.Rank::getOrderOfRanking)).collect(Collectors.toList());
         int commonDifferenceSum = 0;
-        for (int i = 1; i < sortedKeys.size() - 1; i++) {
-            commonDifferenceSum += (sortedKeys.get(i).getOrderOfRanking() - sortedKeys.get(i - 1).getOrderOfRanking());
+        for (int i = 0; i < sortedKeys.size() - 1; i++) {
+            commonDifferenceSum += (sortedKeys.get(i+1).getOrderOfRanking() - sortedKeys.get(i).getOrderOfRanking());
         }
         if (commonDifferenceSum == 4) {
             return true;
