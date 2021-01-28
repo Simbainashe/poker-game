@@ -17,7 +17,7 @@ class BestPokerHandIdentifierImpl implements BestPokerHandIdentifier {
     private static final Logger LOGGER = LoggerFactory.getLogger(BestPokerHandIdentifierImpl.class);
     private static final List<PokerHand> POKER_HANDS = Arrays.asList(FiveOfAKindPokerHand.INSTANCE,
             FourOfAKindPokerHand.INSTANCE, StraightFlushPokerHand.INSTANCE,FullHousePokerHand.INSTANCE,
-            FlushPokerHand.INSTANCE);
+            FlushPokerHand.INSTANCE, TwoPairPokerHand.INSTANCE);
 
     @Override
     public Optional<PokerHand> determineBestHand(Set<Card> cards) {

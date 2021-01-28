@@ -29,7 +29,7 @@ public class PokerGameApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        LOGGER.info("Paying poker game");
+        LOGGER.info("Playing poker game");
         Set<Card> cards = cardsReader.readCardSelection();
         System.out.println(bestPokerHandIdentifier.determineBestHand(cards).map(PokerHand::getName)
                 .orElse("No poker hand can be constructed."));

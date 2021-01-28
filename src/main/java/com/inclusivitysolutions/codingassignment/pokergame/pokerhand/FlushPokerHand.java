@@ -14,7 +14,7 @@ class FlushPokerHand extends PokerHand {
     static final FlushPokerHand INSTANCE = new FlushPokerHand();
 
     private FlushPokerHand() {
-        super("Flush", 2);
+        super("Flush", 4);
     }
 
     @Override

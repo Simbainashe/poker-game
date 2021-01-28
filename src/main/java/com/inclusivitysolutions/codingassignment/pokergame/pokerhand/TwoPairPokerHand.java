@@ -10,26 +10,27 @@ import java.util.Objects;
  * @author fact
  * 28/1/2021
  */
-class FullHousePokerHand extends PokerHand {
-    static final FullHousePokerHand INSTANCE = new FullHousePokerHand();
+class TwoPairPokerHand extends PokerHand {
+    static final TwoPairPokerHand INSTANCE = new TwoPairPokerHand();
 
-    private FullHousePokerHand() {
-        super("Full House", 3);
+    private TwoPairPokerHand() {
+        super("Two Pair", 7);
     }
 
     @Override
     public boolean matches(Map<Card.Rank, List<Card.Suit>> rankSuitMap) {
         Objects.requireNonNull(rankSuitMap, "rankSuitMap cannot be null");
-        boolean hasThreeOfAKind = false, hasATwoOfAKind = false;
-
+        boolean hasAKicker = false;
+        if (!rankSuitMap.containsKey(Card.Rank.JOKER)) {
+            hasAKicker = true;
+        }
+        int twoOfAKindCount = 0;
         for (List<Card.Suit> suitCards : rankSuitMap.values()) {
-            if (suitCards.size() == 3) {
-                hasThreeOfAKind = true;
-            } else if (suitCards.size() == 2) {
-                hasATwoOfAKind = true;
+            if (suitCards.size() == 2) {
+                twoOfAKindCount++;
             }
         }
 
-        return hasThreeOfAKind && hasATwoOfAKind;
+        return hasAKicker && twoOfAKindCount == 2;
     }
 }
