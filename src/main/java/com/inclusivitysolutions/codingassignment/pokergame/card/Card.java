@@ -1,4 +1,4 @@
-package com.inclusivitysolutions.codingassignment.pokergame;
+package com.inclusivitysolutions.codingassignment.pokergame.card;
 
 import java.util.Objects;
 

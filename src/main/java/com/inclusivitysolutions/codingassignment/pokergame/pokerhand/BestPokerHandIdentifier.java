@@ -1,4 +1,6 @@
-package com.inclusivitysolutions.codingassignment.pokergame;
+package com.inclusivitysolutions.codingassignment.pokergame.pokerhand;
+
+import com.inclusivitysolutions.codingassignment.pokergame.card.Card;
 
 import java.util.Set;
 

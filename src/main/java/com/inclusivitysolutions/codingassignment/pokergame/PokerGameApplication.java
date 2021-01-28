@@ -1,5 +1,8 @@
 package com.inclusivitysolutions.codingassignment.pokergame;
 
+import com.inclusivitysolutions.codingassignment.pokergame.card.Card;
+import com.inclusivitysolutions.codingassignment.pokergame.cardreader.CardsReader;
+import com.inclusivitysolutions.codingassignment.pokergame.pokerhand.BestPokerHandIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
