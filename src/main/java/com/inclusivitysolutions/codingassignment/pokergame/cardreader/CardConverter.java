@@ -1,12 +1,8 @@
 package com.inclusivitysolutions.codingassignment.pokergame.cardreader;
 
 import com.inclusivitysolutions.codingassignment.pokergame.card.Card;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,34 +10,27 @@ import java.util.stream.Collectors;
  * @author fact
  * 28/1/2021
  */
-@Service
-class CardsReaderImpl implements CardsReader {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CardsReaderImpl.class);
-    private static final Scanner SCANNER = new Scanner(System.in);
-
-    @Override
-    public Set<Card> readCardSelection() {
-        LOGGER.info("Reading user's card selection <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-       try {
-           return readCardSelectionFromCommandLineInput();
-       }catch (IllegalArgumentException e){
-           return readCardSelectionFromCommandLineInput();
-       }
+final class CardConverter {
+    private CardConverter() {
     }
 
-    private Set<Card> readCardSelectionFromCommandLineInput(){
-       System.out.print("Enter card selection: ");
-        String playerInput = SCANNER.nextLine();
-        String[] cardDetails = playerInput.split(",");
-        return Arrays.stream(cardDetails).map(this::convertToCard).collect(Collectors.toSet());
+    /**
+     *
+     * @param stringCardDetails
+     * @return Set<Card>
+     * @throws IllegalArgumentException
+     */
+    public static Set<Card> convertToCards(String stringCardDetails) {
+        String[] cardDetails = stringCardDetails.split(",");
+        return Arrays.stream(cardDetails).map(CardConverter::convertToCard).collect(Collectors.toSet());
     }
 
-    private Card convertToCard(String stringCardDetails) {
+    private static Card convertToCard(String stringCardDetails) {
         stringCardDetails = stringCardDetails.trim();
         return Card.of(convertToCardRank(stringCardDetails), convertToCardSuit(stringCardDetails));
     }
 
-    private Card.Rank convertToCardRank(String stringCardDetails) {
+    private static Card.Rank convertToCardRank(String stringCardDetails) {
         char firstCharacter = stringCardDetails.charAt(0);
         switch (firstCharacter) {
             case '*':
@@ -77,7 +66,7 @@ class CardsReaderImpl implements CardsReader {
         }
     }
 
-    private Card.Suit convertToCardSuit(String stringCardDetails) {
+    private static Card.Suit convertToCardSuit(String stringCardDetails) {
         String stringCardDetailsExcludingFirstCharacter = stringCardDetails.substring(1);
         if (stringCardDetailsExcludingFirstCharacter.contains("S")) {
             return Card.Suit.SPADES;
